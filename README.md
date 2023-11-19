@@ -1,1 +1,1 @@
-# sov-ohj-jatkokurssi
+# Sovellusohjelmoinnin jatkokurssi
