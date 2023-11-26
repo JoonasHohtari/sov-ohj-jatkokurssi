@@ -3,6 +3,7 @@ import {View} from 'react-native';
 import Header from './Header';
 import WeatherDisplay from './WeatherDisplay';
 import Footer from './Footer';
+import RefreshButton from './RefreshButton';
 import {getWeatherData} from './api'; // You'll create this file for API calls
 import {globalStyles} from './styles';
 
@@ -15,24 +16,37 @@ interface WeatherData {
   windSpeed: number;
   humidity: number;
 }
-
 const App: React.FC = () => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
+  const [isRefreshing, setIsRefreshing] = useState(false);
 
-  useEffect(() => {
-    // Fetch weather data and update state
-    const fetchData = async () => {
-      const data = await getWeatherData(); // Implement this function in 'api.ts'
+  const fetchData = async () => {
+    try {
+      const data = await getWeatherData();
       setWeatherData(data);
-    };
-
+    } catch (error) {
+      console.error('Error fetching weather data:', error);
+    } finally {
+      setIsRefreshing(false);
+    }
+  };
+  useEffect(() => {
     fetchData();
   }, []);
 
   return (
     <View style={globalStyles.container}>
       <Header />
-      <WeatherDisplay data={weatherData} />
+      <View style={globalStyles.descriptionContainer}>
+        <WeatherDisplay data={weatherData} />
+      </View>
+      <RefreshButton
+        onRefresh={() => {
+          setIsRefreshing(true);
+          fetchData();
+        }}
+        isRefreshing={isRefreshing}
+      />
       <Footer />
     </View>
   );

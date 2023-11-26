@@ -28,7 +28,6 @@ const WeatherDisplay: React.FC<WeatherDisplayProps> = ({data}) => {
       return '🌡';
     }
   };
-
   // Extract and display relevant weather information
   const {
     temperature,
@@ -53,13 +52,13 @@ const WeatherDisplay: React.FC<WeatherDisplayProps> = ({data}) => {
           {temperature.toFixed(0)}°C
         </Text>
       </View>
-      <View style={globalStyles.descriptionContainer}>
+      <View>
         <Text style={globalStyles.sectionTitle}>Weather Details</Text>
 
         <View style={globalStyles.detailRow}>
           <Text style={globalStyles.data}>{description}</Text>
           {icon && (
-            <View style={globalStyles.iconContainer}>
+            <View>
               <Image
                 source={{uri: `http://openweathermap.org/img/w/${icon}.png`}}
                 style={globalStyles.icon as ImageStyle}

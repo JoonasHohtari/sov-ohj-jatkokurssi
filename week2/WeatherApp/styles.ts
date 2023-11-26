@@ -1,7 +1,6 @@
 import {StyleSheet} from 'react-native';
 
 const primaryColor = '#333';
-const secondaryColor = '#666';
 const backgroundColor = '#d3d3d3';
 const containerBackgroundColor = '#f9f9f9';
 
@@ -22,8 +21,8 @@ const font = {
 export const globalStyles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor,
     padding: 16,
-    backgroundColor: backgroundColor,
   },
   heading: {
     ...font.bold,
@@ -44,6 +43,7 @@ export const globalStyles = StyleSheet.create({
     ...font.bold,
     fontSize: 18,
     marginBottom: 8,
+    marginTop: 8,
   },
   temperatureIcon: {
     ...font.bold,
@@ -62,43 +62,53 @@ export const globalStyles = StyleSheet.create({
     width: 50,
     height: 50,
   },
-  iconContainer: {
+  label: {
+    ...font.bold,
+    fontSize: 16,
+    marginTop: 10,
+  },
+  data: {
+    ...font.normal,
+    fontSize: 16,
+    color: primaryColor,
+    marginTop: 10,
+  },
+  descriptionContainer: {
+    flex: 3,
+    backgroundColor: containerBackgroundColor,
+    padding: 16,
+    borderRadius: 4,
+  },
+  sectionTitle: {
+    ...font.bold,
+    fontSize: 18,
+  },
+  detailRow: {
+    flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 12,
+    marginBottom: 10,
+    marginTop: 10,
   },
   footer: {
-    flex: 1,
-    justifyContent: 'flex-end',
+    flexDirection: 'row',
     padding: 10,
     backgroundColor: primaryColor,
+    marginTop: 16,
   },
   footerText: {
     fontSize: 12,
     color: primaryColor,
   },
-  label: {
-    ...font.bold,
-    fontSize: 16,
-  },
-  data: {
-    ...font.normal,
-    fontSize: 16,
-    color: secondaryColor,
-  },
-  descriptionContainer: {
-    backgroundColor: containerBackgroundColor,
-    padding: 16,
-    borderRadius: 8,
-    marginBottom: 16,
-  },
-  sectionTitle: {
-    ...font.bold,
-    fontSize: 18,
-    marginBottom: 8,
-  },
-  detailRow: {
-    flexDirection: 'row',
+  refreshButton: {
+    backgroundColor: '#3498db', // or any color you prefer
+    padding: 10,
+    borderRadius: 5,
+    marginTop: 16,
     alignItems: 'center',
-    marginBottom: 8,
+  },
+  buttonText: {
+    color: '#fff', // white text color
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
