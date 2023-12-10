@@ -1,54 +1,27 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {View} from 'react-native';
 import Header from './Header';
-import WeatherDisplay from './WeatherDisplay';
-import Footer from './Footer';
-import RefreshButton from './RefreshButton';
-import {getWeatherData} from './api'; // You'll create this file for API calls
+import WeatherScreen from './WeatherScreen';
+import WeatherForecast from './WeatherForecast';
 import {globalStyles} from './styles';
+import Footer from './Footer';
+import {createStackNavigator} from '@react-navigation/stack';
+import {NavigationContainer} from '@react-navigation/native';
 
-interface WeatherData {
-  temperature: number;
-  description: string;
-  icon: string;
-  location: string;
-  country: string;
-  windSpeed: number;
-  humidity: number;
-}
+const Stack = createStackNavigator();
+
 const App: React.FC = () => {
-  const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
-  const [isRefreshing, setIsRefreshing] = useState(false);
-
-  const fetchData = async () => {
-    try {
-      const data = await getWeatherData();
-      setWeatherData(data);
-    } catch (error) {
-      console.error('Error fetching weather data:', error);
-    } finally {
-      setIsRefreshing(false);
-    }
-  };
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   return (
-    <View style={globalStyles.container}>
-      <Header />
-      <View style={globalStyles.descriptionContainer}>
-        <WeatherDisplay data={weatherData} />
+    <NavigationContainer>
+      <View style={globalStyles.container}>
+        <Header />
+        <Stack.Navigator>
+          <Stack.Screen name="Current Weather" component={WeatherScreen} />
+          <Stack.Screen name="5 Day forecast" component={WeatherForecast} />
+        </Stack.Navigator>
+        <Footer />
       </View>
-      <RefreshButton
-        onRefresh={() => {
-          setIsRefreshing(true);
-          fetchData();
-        }}
-        isRefreshing={isRefreshing}
-      />
-      <Footer />
-    </View>
+    </NavigationContainer>
   );
 };
 

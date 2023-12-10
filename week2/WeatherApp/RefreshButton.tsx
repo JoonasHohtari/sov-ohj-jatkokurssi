@@ -1,4 +1,3 @@
-// RefreshButton.tsx
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {globalStyles} from './styles';
@@ -13,13 +12,15 @@ const RefreshButton: React.FC<RefreshButtonProps> = ({
   isRefreshing,
 }) => {
   return (
-    <TouchableOpacity onPress={onRefresh} disabled={isRefreshing}>
-      <View style={globalStyles.refreshButton}>
-        <Text style={globalStyles.buttonText}>
-          {isRefreshing ? 'Refreshing...' : 'Refresh'}
-        </Text>
-      </View>
-    </TouchableOpacity>
+    <View style={globalStyles.refreshButtonContainer}>
+      <TouchableOpacity onPress={onRefresh} disabled={isRefreshing}>
+        <View style={globalStyles.refreshButton}>
+          <Text style={globalStyles.buttonText}>
+            {isRefreshing ? 'Refreshing...' : 'Refresh'}
+          </Text>
+        </View>
+      </TouchableOpacity>
+    </View>
   );
 };
 

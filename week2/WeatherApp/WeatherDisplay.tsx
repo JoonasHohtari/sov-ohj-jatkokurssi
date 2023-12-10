@@ -1,18 +1,7 @@
 import React from 'react';
 import {Text, View, Image, ImageStyle} from 'react-native';
 import {globalStyles} from './styles';
-
-interface WeatherDisplayProps {
-  data: {
-    temperature: number;
-    description: string;
-    icon: string;
-    location: string;
-    country: string;
-    windSpeed: number;
-    humidity: number;
-  } | null;
-}
+import {WeatherDisplayProps} from './types';
 
 const WeatherDisplay: React.FC<WeatherDisplayProps> = ({data}) => {
   if (!data) {
@@ -41,7 +30,6 @@ const WeatherDisplay: React.FC<WeatherDisplayProps> = ({data}) => {
 
   return (
     <View>
-      <Text style={globalStyles.heading}>Current Weather</Text>
       <Text style={globalStyles.location}>
         {location}, {country}
       </Text>

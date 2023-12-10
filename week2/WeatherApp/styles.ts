@@ -18,11 +18,38 @@ const font = {
   // Add more font variations as needed
 };
 
+export const extraButtonStyles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 5, // Align buttons with equal space between them
+  },
+  extraButton: {
+    flex: 1,
+    height: 80, // Set a fixed height for the buttons
+    backgroundColor: '#3498db',
+    padding: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center', // Center content vertically
+    marginTop: 10, // Add margin between buttons
+    marginHorizontal: 2, // Add margin between buttons
+    marginBottom: 5,
+  },
+  extraButtonText: {
+    color: '#fff',
+    fontSize: 12,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+});
+
 export const globalStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor,
-    padding: 16,
+    padding: 12,
   },
   heading: {
     ...font.bold,
@@ -74,10 +101,28 @@ export const globalStyles = StyleSheet.create({
     marginTop: 10,
   },
   descriptionContainer: {
-    flex: 3,
+    flex: 1,
     backgroundColor: containerBackgroundColor,
     padding: 16,
     borderRadius: 4,
+  },
+  refreshButtonContainer: {
+    marginTop: 10,
+    justifyContent: 'flex-end',
+  },
+  refreshButton: {
+    width: 'auto',
+    height: 50,
+    backgroundColor: '#3498db',
+    padding: 5,
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
   sectionTitle: {
     ...font.bold,
@@ -99,16 +144,14 @@ export const globalStyles = StyleSheet.create({
     fontSize: 12,
     color: primaryColor,
   },
-  refreshButton: {
-    backgroundColor: '#3498db', // or any color you prefer
-    padding: 10,
-    borderRadius: 5,
-    marginTop: 16,
-    alignItems: 'center',
+  cardContainer: {
+    marginBottom: 10, // Adjust this for spacing between cards
   },
-  buttonText: {
-    color: '#fff', // white text color
-    fontSize: 16,
-    fontWeight: 'bold',
+  card: {
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#000',
+    padding: 16,
   },
 });
