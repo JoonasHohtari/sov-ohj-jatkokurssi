@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">compose_exercise</string>
+    <string name="rainy">Sateinen</string>
+    <string name="sunny">Aurinkoinen</string>
+    <string name="wind">Tuuli</string>
+    <string name="se">Kaakko</string>
+    <string name="Finland">Suomi</string>
+</resources>
