@@ -76,7 +76,7 @@ export interface ForecastApiResponse {
 export const getWeatherForecast = async (): Promise<{
   forecastData: ForecastApiResponse;
 }> => {
-  const apiKey = '6ee40ff1d73c30c709bbb61e94d7345c';
+  const apiKey = process.env.API_KEY;
   const city = 'Tampere';
 
   try {
