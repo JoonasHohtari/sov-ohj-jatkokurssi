@@ -10,8 +10,6 @@ void main() async {
   runApp(const WeatherApp());
 }
 
-final apiKey = dotenv.env['API_KEY'];
-
 final Logger logger = Logger();
 
 class WeatherApp extends StatelessWidget {
