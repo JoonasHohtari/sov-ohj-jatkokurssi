@@ -3,9 +3,14 @@ import 'weather_api.dart';
 import 'package:logger/logger.dart';
 import 'package:intl/intl.dart';
 
-void main() {
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+void main() async {
+  await dotenv.load(fileName: ".env"); // Correctly loads .env file
   runApp(const WeatherApp());
 }
+
+final apiKey = dotenv.env['API_KEY'];
 
 final Logger logger = Logger();
 
@@ -35,8 +40,10 @@ class WeatherScreenState extends State<WeatherScreen> {
   @override
   void initState() {
     super.initState();
+    final apiKey = dotenv.env['API_KEY'] ?? '';
+
     weatherApi = WeatherApi(
-      apiKey: '6ee40ff1d73c30c709bbb61e94d7345c',
+      apiKey: apiKey,
       baseUrl: 'https://api.openweathermap.org/data/2.5/forecast',
     );
 
