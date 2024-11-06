@@ -8,8 +8,10 @@ interface WeatherApiResponse {
   humidity: number;
 }
 
+require('dotenv').config();
+
 export const getWeatherData = async (): Promise<WeatherApiResponse> => {
-  const apiKey = '6ee40ff1d73c30c709bbb61e94d7345c';
+  const apiKey = process.env.API_KEY;
   const city = 'Tampere';
 
   try {
